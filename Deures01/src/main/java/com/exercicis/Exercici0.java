@@ -74,8 +74,23 @@ public class Exercici0 {
      * @test ./runTest.sh "com.exercicis.TestExercici0#testValidarNom"
      */
     public static boolean validarNom(String nom) {
-        // TODO
-        return false;
+        /** treure els espais i posar en minuscules */
+        nom = nom.trim().toLowerCase();
+        /*Si després de treure els espais NOM es buit es que nomes eren espais en blanc NO VALID */
+        if (nom.isEmpty()){
+            return  false;
+        }
+        
+        String caractersAcceptats = " abcdefghijklmnopqrstuvwxyzàáèéìíòóùúäëïöüç";
+        /*.toCharArray agafa els chars de nom */
+        for (char car : nom.toCharArray()) {
+            /*comprova si els chars estan dins de caractersAcceptats si retona -1 es que no esta dins */
+            if (caractersAcceptats.indexOf(car)==-1){
+                return false;
+            };
+            
+        }
+        return true;
     }
     
     /**
@@ -89,8 +104,9 @@ public class Exercici0 {
      * @test ./runTest.sh "com.exercicis.TestExercici0#testValidarEdat"
      */
     public static boolean validarEdat(int edat) {
-        // TODO
-        return false;
+        /*como la condicion ya devuelve true o false, se pone directament el return */
+        return (edat>=18 && edat <=100) ;
+    
     }
 
     /**
@@ -111,7 +127,19 @@ public class Exercici0 {
      * @test ./runTest.sh "com.exercicis.TestExercici0#testValidarFactors"
      */
     public static boolean validarFactors(String[] factors) {
-        // TODO
+        /*si no esta buit y la longitud es 2 */
+        if (factors!= null && factors.length == 2){
+            /*agafa el primer valor con tipus y el segon com risc */
+            String tipus = factors[0];
+            String risc = factors[1];
+            /*excepció NO pot haver autonom y risc baix */
+            if ("autònom".equals(tipus) && "risc baix".equals(risc)){
+                return false;
+            }
+            /*han de ser aquests valors: */
+            return ("autònom".equals(tipus) || "empresa".equals(tipus)) && 
+            ("risc baix".equals(risc) || "risc mitjà".equals(risc) ||"risc alt".equals(risc));
+        }
         return false;
     }
 

@@ -74,6 +74,7 @@ public class Resolt0 {
      * @test ./runTest.sh "com.exercicis.TestExercici0#testValidarNom"
      */
     public static boolean validarNom(String nom) {
+        
         nom = nom.trim().toLowerCase(); 
     
         if (nom.isEmpty()) {
